@@ -1,5 +1,5 @@
-// @/components/canvas-reveal-bg.tsx
 "use client";
+
 import { AnimatePresence, motion } from "motion/react";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 
@@ -7,10 +7,14 @@ interface BackgroundProps {
   hovered: boolean;
 }
 
-export function CanvasRevealEffectDemo3({ hovered }: BackgroundProps) {
+export function CanvasRevealEffectDemo4({ hovered }: BackgroundProps) {
   return (
-    // Note: Removed mouse listeners from here, added pointer-events-none to prevent interaction lag
-    <div className="fixed inset-0 -z-10 h-screen w-screen flex flex-col lg:flex-row overflow-hidden items-center justify-center bg-linear-to-b from-black to-gray-600 gap-4 pointer-events-none">
+    <div
+      className="h-160 flex flex-col lg:flex-row overflow-hidden items-center justify-center bg-black w-full gap-4 mx-auto px-8 relative"
+    >
+      <p className="md:text-2xl text-2xl font-medium text-center text-white relative z-20 max-w-2xl mx-auto">
+       
+      </p>
       <AnimatePresence>
         {hovered && (
           <motion.div
@@ -20,18 +24,19 @@ export function CanvasRevealEffectDemo3({ hovered }: BackgroundProps) {
             className="h-full w-full absolute inset-0"
           >
             <CanvasRevealEffect
-              animationSpeed={2}
+              animationSpeed={5}
               containerClassName="bg-transparent"
               colors={[
                 [59, 130, 246],
                 [139, 92, 246],
               ]}
               opacities={[0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 1]}
-              dotSize={2.2}
+              dotSize={2}
             />
           </motion.div>
         )}
       </AnimatePresence>
+      {/* Radial gradient for the cute fade */}
       <div className="absolute inset-0 mask-[radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
     </div>
   );
